@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="dahuiji.css"/>
+	</head>
+	<body>
+		<div id="body_main" class="main">
+			<ul id="options" class="options">
+				<li value="1">较为困难</li>
+				<li value="2">一般般啦</li>
+				<li value="3">小菜一碟</li>
+				<li value="4">新手村</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+//		4个对象:
+//			引擎:按钮的点击,难易度的保存,logo和loading,背景图,游戏开始
+//			我的飞机:创建，跟随鼠标，开火,碰撞敌机
+//			子弹：创建，移动，碰撞敌机，边界，死亡
+//			敌机：随机创建随机类型和位置，移动，碰撞我的飞机，子弹，边界，减血量，死亡
+
+          function Engine(){
+          	    this.btn = document.getElementById("options").children;
+          	    this.main = document.getElementById("body_main");
+          	    this.hard = 1;  
+          	    this.init()
+          }
+//       选择难易程度
+          Engine.prototype.init = function(){
+          	  var that= this;
+          	  for(var i=0;i<this.btn.length;i++){
+          	  	   this.btn[i].onclick = function(){
+          	  	   	    that.hard = this.value;
+          	  	   	    this.parentNode.remove();
+          	  	   	    that.loading();
+          	  	   }
+          	  }
+          }
+          Engine.prototype.loading = function(){
+          	      var logo = createDiv("logo");
+          	      var load = createDiv("loading");
+          	      
+          	      var i = 1;         	      
+          	      load.timer = setInterval(()=>{
+//        	      	   i = i==3 ? 1 : i+1;ss
+//					   load.style.backgroundImage = "url(images/loading"+i+".png)";
+                       load.style.backgroundImage = "url(images/loading"+ ((i++)%3+1) +".png)";
+          	      },500)
+          	      
+//        	                 开启计时器,背景图运动
+          	      var j=0;
+          	      setInterval(()=>{
+          	      	   j += 3;
+          	      	   this.main.style.backgroundPositionY = j + "px"; 
+          	      },30)
+          	      
+          	      setTimeout(()=>{
+//        	      	点击选择难易程度，延时删除加载界面，同时清除计时器
+          	      	   logo.remove();      
+          	      	   load.remove();
+          	      	   clearInterval(load.timer);
+          	      	   this.gameStart();
+          	      },3000)
+          }
+          Engine.prototype.gameStart = function(){
+//        	               创建飞机
+          	     plane.init(this.main)
+//        	               创建子弹,调用飞机开火
+                 plane.fire(this.hard)
+//               创建敌机，随机出现大，中，小                      
+                 setInterval(()=>{
+                 	  if(Math.random()<=0.5) new Enemy(this.main,1)
+                 },1000)
+                 setInterval(()=>{
+                 	  if(Math.random()<=0.3) new Enemy(this.main,2)
+                 },3000)
+                 setInterval(()=>{
+                 	  if(Math.random()<=0.2) new Enemy(this.main,3)
+                 },6000)
+                 
+          }
+          
+          
+          var plane = {
+//        	      创建我的飞机 ，设定初始位置
+          	      init:function(main){
+          	      	   this.main = main;
+          	      	   this.ele = createDiv("my-warplain");
+          	      	   this.ele.style.left = (this.main.offsetWidth -this.ele.offsetWidth)/2 + "px";
+          	      	   this.ele.style.bottom = 0;
+          	      	   this.sace = createDiv("sace")
+          	      	   this.index = 0;
+                       this.sace.innerHTML = "分数:&nbsp;&nbsp;"+"<span>"+ this.index +"</span>";
+          	      	   this.move()
+          	      },
+//        	      移动飞机,边界限定
+          	      move:function(){
+          	      	   document.onmousemove = ((eve)=>{
+          	      	   	    var e = eve || window.event;          	      	   	
+          	      	   	    var l = e.clientX - this.main.offsetLeft - this.ele.offsetWidth/2;
+          	      	   	    var t = e.clientY - this.ele.offsetHeight/2;
+          	      	   	     
+          	      	   	    if(l<0) l=0;
+          	      	   	    if(t<0) t=0;
+          	      	   	    if(l>this.main.offsetWidth-this.ele.offsetWidth)l=this.main.offsetWidth-this.ele.offsetWidth;
+          	      	   	     
+          	      	   	    this.ele.style.left = l + "px";
+          	      	   	    this.ele.style.top = t + "px";   
+          	      	   	            	      	   	    
+          	      	   })
+          	      }, 
+          	      die:function(){      	    
+          	      	    var i=0;
+          	      	    this.dieTimer = setInterval(()=>{
+          	      	    	 if(i == 4){
+          	      	    	 	  clearInterval(this.dieTimer)
+          	      	    	 	  this.ele.remove()
+          	      	    	 }else{
+          	      	    	 	  this.ele.style.backgroundImage = "url(images/me_die"+(++i)+".png)"          	      	    	 	 
+          	      	    	 }
+          	      	    },100)        	      	    
+          	      },
+//        	       添加计时器,创建无限子弹
+          	      fire:function(hard){  
+          	      	   var t = 400;
+//        	      	   根据hard值改变t的值,从而改变子弹射速,选择难易程度
+          	      	   switch(hard){
+          	      	   	      case 1:
+          	      	   	           t = 500;break;
+          	      	   	      case 2:
+          	      	   	           t = 350;break;
+          	      	   	      case 3:
+          	      	   	           t = 200;break;
+          	      	   	      case 4:
+          	      	   	           t = 80;break;
+          	      	   }         	    
+          	      	   this.ele.timer = setInterval(()=>{
+//        	      	   	             每t时间发射出的子弹都存入数组中
+	          	      	   	this.aBullet.push(new Bullet())
+          	      	   },t)  
+          	      },
+//        	                  声明一个空数组，用来存放发射出去的子弹
+          	      aBullet:[]
+          }
+          
+          function Bullet(){
+          	   this.init()
+          }
+          Bullet.prototype = {
+          	    constructor:Bullet,
+//        	           创建子弹，设定初设位置
+          	    init:function(){
+          	    	this.ele = createDiv("bullet")
+          	    	this.ele.style.left = plane.ele.offsetLeft + plane.ele.offsetWidth/2 - this.ele.offsetWidth/2 + "px";
+          	    	this.ele.style.top = plane.ele.offsetTop - this.ele.offsetHeight + "px";
+          	    	  
+          	    	this.move()
+          	    },
+//        	            子弹运动
+          	    move:function(){
+          	    	var speed = 5;
+          	    	this.timer = setInterval(()=>{
+          	    		if(this.ele.offsetTop <= 0){
+          	    			  clearInterval(this.timer)
+          	    			  this.die()
+          	    		}else{
+          	    			  this.ele.style.top = this.ele.offsetTop - speed + "px";
+          	    		}
+          	    	},30)
+          	    },
+          	    die:function(){
+          	    	 this.ele.className = "bullet_die";
+          	    	 setTimeout(()=>{
+          	    	 	 this.ele.style.backgroundImage = "url(images/die2.png)"
+          	    	 },50)
+          	    	 setTimeout(()=>{
+//        	    	 	 遍历发射出来存到数组中的子弹,当数组中的某个子弹等于当前爆炸的子弹时,就从数组中删除
+          	    	 	 for(var i=0;i<plane.aBullet.length;i++){
+          	    	 	 	  if(plane.aBullet[i].ele == this.ele){
+          	    	 	 	  	     plane.aBullet.splice(i,1)
+          	    	 	 	  }
+          	    	 	 }         	    	 	
+          	    	 	 this.ele.remove()
+          	    	 },100)
+          	    }
+          }
+          
+          class Enemy{
+          	     constructor(main,type){
+          	     	  this.main = main;
+          	     	  this.type = type;
+          	     	  
+          	     	  this.init()
+          	     }
+          	     init(){
+          	     	  switch(this.type){
+          	     	  	   case 1:
+          	     	  	       this.ele = createDiv("enemy-small");
+          	     	  	       this.speed = 3;
+          	     	  	       this.i = 3;
+          	     	  	       this.hp = 5;
+          	     	  	       this.n = 2;
+          	     	  	       break;
+          	     	  	   case 2:
+          	     	  	       this.ele = createDiv("enemy-middle");
+          	     	  	       this.speed = 2;
+          	     	  	       this.i = 4;
+          	     	  	       this.hp = 10;
+          	     	  	       this.n = 6;
+          	     	  	       break;
+          	     	  	   case 3:
+          	     	  	       this.ele = createDiv("enemy-large");
+          	     	  	       this.speed = 1;
+          	     	  	       this.i = 6;
+          	     	  	       this.hp = 15;
+          	     	  	       this.n = 10;
+          	     	  	       break;
+          	     	  }
+//        	     	       敌机随机出现的left值
+          	     	  this.ele.style.left = random(0,this.main.offsetWidth - this.ele.offsetWidth) + "px";
+          	     	  this.ele.style.top = -this.ele.offsetHeight + "px";
+          	     	  
+          	     	  this.move()
+          	     }
+          	     move(){
+          	     	  this.moveTimer = setInterval(()=>{
+          	     	  	     if(this.ele.offsetTop >= this.main.offsetHeight + 100){
+          	     	  	     	   clearInterval(this.moveTimer)
+          	     	  	     	   this.die()
+          	     	  	     }else{
+          	     	  	     	   this.ele.style.top = this.ele.offsetTop + this.speed + "px"; 
+          	     	  	     	   
+//        	     	  	     	         碰撞检测
+                                   for(var i=0;i<plane.aBullet.length;i++){
+                                   	   if(plane.aBullet[i].ele.offsetLeft + plane.aBullet[i].ele.offsetWidth > this.ele.offsetLeft){
+                                   	   	    if(this.ele.offsetLeft + this.ele.offsetWidth > plane.aBullet[i].ele.offsetLeft){
+                                   	   	      	if(this.ele.offsetTop + this.ele.offsetHeight > plane.aBullet[i].ele.offsetTop){
+                                   	   	      	    if(plane.aBullet[i].ele.offsetTop + plane.aBullet[i].ele.offsetHeight > this.ele.offsetTop){                                  	   	      	     	    	                                    	   	      	 
+                                   	   	      	     	    plane.aBullet[i].die()
+                                   	   	      	     	    this.hp--;
+                                   	   	      	     	    if(this.hp <= 0){
+                                   	   	      	     	    	this.die(1)
+                                   	   	      	     	    	clearInterval(this.moveTimer)
+                                   	   	      	     	    } 
+                                   	   	      	     	    
+                                   	   	      	    }
+                                   	   	        }
+                                   	   	    }
+                                   	   }
+                                   }  
+                                   if(plane.ele.offsetLeft + plane.ele.offsetWidth > this.ele.offsetLeft){
+		                                if(this.ele.offsetLeft + this.ele.offsetWidth > plane.ele.offsetLeft){
+		                                   	if(this.ele.offsetTop + this.ele.offsetHeight > plane.ele.offsetTop){
+		                                   	   	if(plane.ele.offsetTop + plane.ele.offsetHeight > this.ele.offsetTop){                                  	   	      	     	    	  
+		                                   	   	        plane.die()		
+		                                   	   	        clearInterval(this.moveTimer)
+		                                   	   	        createDiv("gameover")
+		                                   	   	        setTimeout(()=>{
+		                                   	   	        	alert("你死了!! 游戏结束!")
+		                                   	   	        	window.location.reload();
+		                                   	   	        },1000)
+		                                   	   	}        
+		                                   	}
+		                                }
+                            	   }
+          	     	  	     }
+          	     	  },30)
+          	     }
+          	     die(a){
+          	     	  if(a){      //传值,判断敌机死亡时分数增加,敌机超出边界死亡和自身飞机死亡时不加分    	     	  	
+		          	      plane.index += this.n;
+		          	      plane.sace.innerHTML = "分数:&nbsp;&nbsp;"+"<span>"+ plane.index +"</span>"; 
+          	     	  }
+	          	      
+          	     	  var i = 0;
+          	     	  this.dieTimer = setInterval(()=>{
+          	     	  	   if(i == this.i){
+	          	     	  	   	 this.ele.remove()
+          	     	  	   	     clearInterval(this.dieTimer)
+          	     	  	   	     
+          	     	  	   }else{
+          	     	  	   	     this.ele.style.backgroundImage = "url(images/plane"+ this.type +"_die"+ (++i) +".png)";
+          	     	  	   }
+          	     	  },100)
+          	     }
+          }
+          
+//        创建飞机,子弹,敌机封装函数,方便调用
+          function createDiv(clas){
+          	    var div = document.createElement("div");
+          	    div.className = clas;
+          	    document.getElementById("body_main").appendChild(div);
+          	    return div;
+          }
+//        随机函数封装
+          function random(a,b){
+          	  return Math.round(Math.random()*(a-b)+b)
+          }
+          
+          
+          new Engine()
+	</script>
+</html>
