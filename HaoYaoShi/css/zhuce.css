@@ -1,0 +1,114 @@
+#top {
+	width: 1200px;
+	height: 97px;
+	margin: 0 auto;
+	position: relative;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#top .top-l {
+	height: 97px;
+	width: 366px;
+}
+
+#top .top-l>img {
+	float: left;
+	width: 366px;
+	height: 97px;
+}
+
+#top .top-r {
+	float: right;
+	height: 97px;
+	position: absolute;
+	right: 0;
+	top: 85px;
+	padding-right: 10px;
+}
+
+#top .top-r>p,
+span {
+	float: left;
+	font-size: 18px;
+	color: #ff334c;
+}
+
+#cenner {
+	margin: 0 auto;
+	height: 642px;
+	background: #f2f2f2;
+}
+
+#cenner .df {
+	height: 20px;
+}
+
+#box {
+	margin: 20px auto;
+	width: 1000px;
+	height: 502px;
+	background: #fff;
+	border: 1px solid #f5f5f5;
+}
+
+#phone,
+#name,
+#pass,
+#repass,
+#submit {
+	outline: none;
+	width: 400px;
+	height: 42px;
+	margin: 10px 300px;
+	border: 1px solid #f5f5f5;
+	text-indent: 10px;
+}
+
+.box1 {
+	margin-top: 80px;
+}
+
+.gf {
+	margin-left: 300px;
+}
+
+.ehyFooter {
+	padding: 50px 0 20px;
+}
+
+.ehyFooter p {
+	color: #7e7e7e;
+	line-height: 24px;
+	font-size: 16px;
+	text-align: center;
+}
+
+.ehyFooter ul {
+	margin: 20px auto;
+	width: 600px;
+	height: 30px;
+	overflow: hidden;
+}
+
+.ehyFooter li {
+	float: left;
+	margin-right: 45px;
+}
+
+.ehyFooter li.last {
+	margin-right: 0;
+}
+
+.ehyFooter li a {
+	display: block;
+	width: 83px;
+	height: 30px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.ehyFooter li img {
+	max-width: 83px;
+	height: 30px;
+}

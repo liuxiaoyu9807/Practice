@@ -1,0 +1,282 @@
+.cn {
+	height: 1200px;
+}
+
+.center {
+	margin: 0 auto;
+}
+
+#contentWrap {
+	padding: 0;
+	user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+}
+
+#lgnBox {
+	height: 100%;
+	background-color: #fff;
+	color: #999;
+	font-family: "\5FAE\8F6F\96C5\9ED1";
+}
+
+#lgnBox .ehyHeader .logo {
+	float: left;
+	display: inline-block;
+	width: 366px;
+	height: 97px;
+	background: url(../imges/land/bg_logo.png) no-repeat;
+}
+
+#lgnBox .ehyHeader span {
+	float: left;
+	display: inline-block;
+	margin-left: 20px;
+	padding-top: 55px;
+	font-size: 18px;
+	color: #ea5514;
+}
+
+#lgnBox .ehyHeader .loginTips {
+	float: right;
+	padding-top: 66px;
+	font-size: 16px;
+}
+
+#lgnBox .ehyBody {
+	min-height: 589px;
+	background-color: #f2f2f2;
+}
+
+#lgnBox .ehyFooter {
+	padding: 50px 0 20px;
+}
+
+#lgnBox .ehyFooter p {
+	color: #7e7e7e;
+	line-height: 24px;
+	font-size: 16px;
+	text-align: center;
+}
+
+#lgnBox .ehyFooter ul {
+	margin: 20px auto;
+	width: 600px;
+	height: 30px;
+	overflow: hidden;
+}
+
+#lgnBox .ehyFooter li {
+	float: left;
+	margin-right: 45px;
+}
+
+#lgnBox .ehyFooter li.last {
+	margin-right: 0;
+}
+
+#lgnBox .ehyFooter li a {
+	display: block;
+	width: 83px;
+	height: 30px;
+	text-align: center;
+	overflow: hidden;
+}
+
+#lgnBox .ehyFooter li img {
+	max-width: 83px;
+	height: 30px;
+}
+
+#lgnBox .loginContainer {
+	padding-top: 90px;
+	min-width: 1200px;
+	height: 499px;
+	background: #ff334c url(../imges/land/bg_login.jpg) no-repeat center top;
+}
+
+#lgnBox .loginWrap {
+	float: right;
+	width: 350px;
+	background-color: #fff;
+}
+
+#lgnBox .loginWrap .hd {
+	height: 50px;
+	background: #f3f3f3 url(imges/land/login_logo.png) no-repeat 25px 0;
+}
+
+#lgnBox .loginWrap .accountBox,
+#lgnBox .loginWrap .telphoneBox {
+	padding: 40px 25px;
+	width: 299px;
+	height: 340px;
+	border: 1px solid #dfdfdf;
+	overflow: hidden;
+}
+
+#lgnBox .btn-login {
+	background: #ff334c;
+}
+
+#lgnBox .loginWrap .title h2 {
+	float: left;
+	font-size: 18px;
+	font-weight: 400;
+	color: #3c3c3c;
+}
+
+.none {
+	display: none;
+}
+
+.loginWrap .wp .item .inputTxt.w240 {
+	width: 240px;
+}
+
+.loginWrap .wp .item .inputTxt.w210 {
+	width: 210px;
+}
+
+.loginWrap .wp .item .inputTxt.w180 {
+	width: 190px;
+}
+
+.loginWrap .wp .item .inputTxt.w150 {
+	width: 150px;
+}
+
+.loginWrap .wp .item .selTxt {
+	float: left;
+	display: block;
+	*margin-top: 10px;
+	width: 240px;
+	height: 38px;
+	*height: 22px;
+	line-height: 40px;
+	border: 0;
+	text-indent: 10px;
+	font-size: 14px;
+	border: 1px solid #dfdfdf;
+}
+
+.loginWrap .wp .item .item-btn {
+	float: right;
+	display: inline-block;
+	width: 96px;
+	line-height: 40px;
+	background-color: #f2f2f2;
+	font-size: 14px;
+	color: #050505;
+	text-align: center;
+	cursor: pointer;
+}
+
+.loginWrap .wp .item .item-btn img {
+	display: block;
+	width: 94px;
+	height: 38px;
+	border: 1px solid #fff;
+}
+
+.loginWrap .wp .item .clear-btn {
+	position: absolute;
+	width: 18px;
+	height: 18px;
+	top: 11px;
+	right: 12px;
+	background: url(http://design.ehaoyao.com/new_site/static/images/icon_clear.png) no-repeat center center;
+	cursor: pointer;
+}
+
+.loginWrap .wp .item-tips {
+	height: 24px;
+	line-height: 24px;
+	color: #ea5514;
+}
+
+.loginWrap .wp .item-tips i {
+	position: relative;
+	display: inline-block;
+	margin-right: 5px;
+	top: 3px;
+	*top: 0;
+	width: 16px;
+	height: 16px;
+	background: url(http://design.ehaoyao.com/new_site/static/images/icon_item_tips.png) no-repeat left center;
+}
+
+.loginWrap .wp.register .item-tips,
+.loginWrap .wp.findpwd .item-tips {
+	margin-bottom: 5px;
+}
+
+.loginWrap .wp .item-chk {
+	margin-bottom: 6px;
+}
+
+.loginWrap .wp .item-chk .chkbox {
+	position: relative;
+	top: 2px;
+}
+
+.loginWrap .wp .item-chk label {
+	line-height: 20px;
+	cursor: pointer;
+}
+
+.loginWrap .wp .item-chk a:hover {
+	color: #008ae0;
+}
+
+.loginWrap .wp .btn {
+	display: block;
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	font-size: 20px;
+	font-family: "\5FAE\8F6F\96C5\9ED1";
+	color: #fff;
+	border: 0;
+	border-radius: 0;
+}
+
+.loginWrap .wp .item-rgt {
+	margin-top: 14px;
+}
+
+.loginWrap .wp .item-rgt span {
+	display: block;
+	height: 20px;
+}
+
+.loginWrap .wp .item-rgt span a {
+	color: #ea5514;
+	font-size: 12px;
+}
+
+.loginWrap .wp .item-rgt span i {
+	position: relative;
+	top: 2px;
+	*top: -2px;
+	margin-left: 8px;
+	display: inline-block;
+	width: 12px;
+	height: 12px;
+	background: url(http://design.ehaoyao.com/new_site/static/images/icon_rgst_n.png) no-repeat left center;
+}
+
+.loginWrap .wp.pwd_steptwo .item {
+	border: 0;
+}
+
+.loginWrap .wp.pwd_steptwo .item .item-label {
+	width: 150px;
+	text-align: right;
+	background-color: #fff;
+}
+
+.loginWrap .wp.pwd_steptwo .item-tips {
+	padding-left: 150px;
+}

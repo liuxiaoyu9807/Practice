@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!-- saved from url=(0042)http://127.0.0.1/1808/page-demo/index.html -->
+<html lang="zh-CN" class="translated-ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>文献</title>
+<style>
+    *{
+        margin: 0 ; 
+        padding: 0;
+        list-style-type: none;
+    }
+    .box{width: 100%;height: 40px;display: flex;justify-content: center;}
+    .pagWarp{
+        height: 40px;
+        box-shadow: 0 2px 5px #b6b6b6;
+        border-radius: 2px;
+        display: flex;
+        justify-content: center;
+    }
+    #btnL,#btnR{
+        line-height: 40px;
+        cursor: pointer;
+    }
+    .pagWarp ul{        
+        height: 40px;
+        text-align: center;
+        padding-left: 40px;
+        padding-right: 40px;
+        display: flex;
+    }
+    .pagWarp ul li{
+        text-align: center;
+        line-height: 40px;
+        padding: 0 4px;
+    }
+    .active{
+        color: blue;
+        font-size: 24px;
+    }
+
+    /* 商品列表样式 */
+.list{
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+        flex-wrap: wrap;
+}
+.list:after{
+    content:'';
+    display: block;
+    clear: both;
+}
+.list li{
+    padding:2%;
+    width: 15%;
+    height: 300px;
+    color: #666;
+    border-right: 1px solid #b6b6b6;
+      box-shadow: 2px 2px 5px #b6b6b6;  
+      margin-left: 8px;
+      margin-top: 20px;
+}
+.list li h2{
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+}
+.list .img{
+    width: 100%;
+    border: 1px solid #b6b6b6;
+    height: 180px;
+}
+.list input[type=button]{
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #b6b6b6;
+    width: 100px;
+    height: 80px;
+}
+</style><link type="text/css" rel="stylesheet" charset="UTF-8" href="./文献_files/translateelement.css"></head>
+
+<body><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	请选择一页显示的数据条数：
+	</font></font><select id="changenum">
+		<option value="3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></option>
+		<option value="4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">4</font></font></option>
+		<option value="5"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">五</font></font></option>
+		<option value="2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2</font></font></option>
+	</select>
+    <ul class="list" id="list">
+       
+    </ul>
+    <div class="box">
+	    <div class="pagWarp" id="pageWarp">
+	        <li id="btnL"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一页</font></font></li>
+	        <ul id="pageList">
+	        </ul>
+	        <li id="btnR"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">下一页</font></font></li>
+	    </div>
+    </div>
+
+<script src="./文献_files/ajax.js.下载" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+	
+//	OOA:
+//		请求数据
+//		渲染页面
+//		生成页码
+//		绑定事件
+//		改变索引
+//		根据索引渲染页面
+//	OOD/OOP
+	class Page{
+		constructor(options){
+			this.url = options.url;
+			this.list = options.list;
+			this.pageList = options.pageList;
+			this.left = options.left;
+			this.right = options.right;
+			this.num = options.num;
+			
+			this.index = 0;
+			
+			this.load();
+		}
+		load(){
+			var that = this;
+			getAjax(this.url).then(function(res){
+//				console.log(JSON.parse(res))
+//				console.log(eval(res))
+				that.res = JSON.parse(res)
+				that.createPage();
+				that.display();
+				that.addEvent();
+			})
+		}
+		createPage(){
+//			console.log(this.res)
+			this.n = Math.ceil(this.res.length / this.num);
+			
+			this.pageList.innerHTML = "";
+			for(var i=0;i<this.n;i++){
+				var li = document.createElement("li");
+				li.innerHTML = i+1;
+				this.pageList.appendChild(li);
+			}
+			
+			this.changeActive()
+		}
+		changeActive(){
+			for(var i=0;i<this.pageList.children.length;i++){
+				this.pageList.children[i].className = ""
+			}
+			this.pageList.children[this.index].className = "active";
+		}
+		display(){
+//			console.log(this.res);
+//			this.res.forEach()
+//			this.index 0
+//			this.index 1
+//			this.index 2
+//			
+//			this.num 4
+//			this.num 4
+//			this.num 4
+//			
+//			this.index * this.num ~ this.index*this.num + this.num
+//			4 ~ 8
+//			8 ~ 12
+			var str = "";
+			for(var i=this.index * this.num;i<this.index*this.num + this.num;i++){
+				if(i<this.res.length){
+					str += `<li>
+						        <img src="${this.res[i].url}" alt="" class="img">        
+						        <h2>商品名称:<span>${this.res[i].name}</span></h2>
+						        <h2>商品介绍:<span>${this.res[i].tip}</span></h2>
+						        <h2>商品价格:<span>${this.res[i].price}</span></h2>
+					        </li>`
+				}
+			}
+			this.list.innerHTML = str;
+		}
+		addEvent(){
+			var that = this;
+			this.left.onclick = function(){
+				if(that.index == 0){
+					that.index = that.n-1;
+				}else{
+					that.index--;
+				}
+				that.display()
+				that.changeActive()
+			}
+			this.right.onclick = function(){
+				if(that.index == that.n-1){
+					that.index = 0;
+				}else{
+					that.index++;
+				}
+				that.display()
+				that.changeActive()
+			}
+		}
+	}
+	
+	
+	var ochange = document.getElementById("changenum")
+	ochange.addEventListener("change",function(){
+//		console.log(this.value)
+		new Page({
+			url:"http://localhost/1808/page-demo/goods.json",
+			list:document.getElementById("list"),
+			pageList:document.getElementById("pageWarp").getElementsByTagName("ul")[0],
+			left:document.getElementById("btnL"),
+			right:document.getElementById("btnR"),
+			num:parseInt(this.value)
+		})
+	})
+	
+	new Page({
+		url:"http://localhost/1808/page-demo/goods.json",
+		list:document.getElementById("list"),
+//		pageList:document.getElementById("pageList"),
+		pageList:document.getElementById("pageWarp").getElementsByTagName("ul")[0],
+		left:document.getElementById("btnL"),
+		right:document.getElementById("btnR"),
+		num:3
+	})
+	
+	
+//	DOM2级
+//	document.addEventListener("click",function(){
+//		console.log(1)
+//	})
+//	document.addEventListener("click",function(){
+//		console.log(2)
+//	})
+
+//	DOM0级
+//	document.onclick = function(){
+//		console.log(1)
+//	}
+//	document.onclick = function(){
+//		console.log(2)
+//	}
+</script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="./文献_files/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

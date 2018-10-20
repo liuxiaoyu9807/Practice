@@ -1,0 +1,72 @@
+#vehicle-a{
+	width: 1200px;
+	margin: 10px auto;
+
+}
+#vehicle-a>div{
+	width: 100%;
+	
+	margin: 0 auto;}
+	
+#vehicle-a>div>a{
+	float: left;	
+	margin-left: 10px ;
+	margin-bottom: 10px;
+	width: 580px;
+	height: 300px;
+}
+#vehicle-a>div>a:nth-of-type(1){
+	background: url(../imges/activ/02.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(1):hover{
+	background: url(../imges/activ/01.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(2){
+	background: url(../imges/activ/2.jpg) no-repeat;
+	float: right;
+}
+#vehicle-a>div>a:nth-of-type(2):hover{
+	background: url(../imges/activ/1.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(3){
+	background: url(../imges/activ/02.jpg) no-repeat;
+	
+}
+#vehicle-a>div>a:nth-of-type(3):hover{
+	background: url(../imges/activ/01.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(4){
+	background: url(../imges/activ/2.jpg) no-repeat;
+	float: right;
+}
+#vehicle-a>div>a:nth-of-type(4):hover{
+	background: url(../imges/activ/1.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(5){
+	background: url(../imges/activ/02.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(5):hover{
+	background: url(../imges/activ/01.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(6){
+	background: url(../imges/activ/2.jpg) no-repeat;
+	float: right;
+}
+#vehicle-a>div>a:nth-of-type(6):hover{
+	background: url(../imges/activ/1.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(7){
+	background: url(../imges/activ/02.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(7):hover{
+	background: url(../imges/activ/01.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(8){
+	background: url(../imges/activ/2.jpg) no-repeat;
+}
+#vehicle-a>div>a:nth-of-type(8):hover{
+	background: url(../imges/activ/1.jpg) no-repeat;
+	float: right;
+}
+
+
