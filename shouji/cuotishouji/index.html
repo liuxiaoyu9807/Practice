@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<!--<link rel="stylesheet" type="text/css" href="libs/pageNav.css"/>-->
+		<link rel="stylesheet" type="text/css" href="libs/bootstrap.css"/>
+		<style type="text/css">
+			*{margin: 0 ; padding: 0;list-style-type: none;}
+			.cont{height: 60px;}
+			.row{margin: 0;}
+			th{text-align: center;}
+			 .box{width: 100%;height: 40px;display: flex;justify-content: center;}
+		    .pagWarp{
+		        height: 40px;
+		        box-shadow: 0 2px 5px #b6b6b6;
+		        border-radius: 2px;
+		        display: flex;
+		        justify-content: center;
+		    }
+		    #btnL,#btnR{
+		        line-height: 40px;
+		        cursor: pointer;
+		    }
+		    .pagWarp ul{        
+		        height: 40px;
+		        text-align: center;
+		        padding-left: 40px;
+		        padding-right: 40px;
+		        display: flex;
+		    }
+		    .pagWarp ul li{
+		        text-align: center;
+		        line-height: 40px;
+		        padding: 0 4px;
+		    }
+		    .active{
+		        color: blue;
+		        font-size: 24px;
+		    }
+		</style>
+	</head>
+	<body>
+		<div class="cont">
+			<div class="row align-items-center h-100">
+				<div class="col-1">LOGO</div>
+				<h2 class="col-2">错题收集</h2>
+				<button type="button" class="btn btn-primary col-2" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" id="addData">添加错题</button>
+			</div>
+			<table class="table mt-5 table-bordered table-hover table-striped table-sm">
+				<thead>
+					<tr style="line-height: 50px;">
+						<th>序号</th>
+						<th>姓名</th>
+						<th>网站的名字</th>
+						<th>网站的地址</th>
+						<th width="100">删除</th>
+						<th width="100">操作</th>
+					</tr>
+				</thead>
+				<tbody id="cont" class="text-center" style="line-height: 40px;">
+					<tr>
+						<td>1</td>
+						<td>2</td>
+						<td>3</td>
+						<td>4</td>
+						<td><span id="delete" class="btn btn-info">删除</span></td>
+						<td><button id="change" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@fat">修改</button></td>
+					</tr>
+				</tbody>
+			</table>
+			<!--<nav aria-label="Page navigation" class="page-nav-outer" id="PageNav"></nav>-->
+			<div class="box">
+			    <div class="pagWarp" id="pageWarp">
+			        <li id="btnL">上一页</li>
+			        <ul>
+			        </ul>
+			        <li id="btnR">下一页</li>
+			    </div>
+		    </div>
+
+<div class="modalbox">
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">请填写信息</h5>
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">&times;</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	        <form>
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">姓名:</label>
+	            <input type="text" class="form-control" id="user-name">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">网站名:</label>
+	            <input type="text" class="form-control" id="web-name">
+	          </div>
+	          <div class="form-group">
+	            <label for="message-text" class="col-form-label">参考网址:</label>
+	            <textarea class="form-control" id="web-url"></textarea>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-primary mx-auto" data-dismiss="modal" id="web-sub">提交</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+</div>
+		</div>
+		
+	</body>
+	<script src="libs/jquery.js"></script>
+	<script src="libs/bootstrap.bundle.min.js"></script>
+	<script src="libs/bootstrap.js"></script>
+	<script src="js/ajax.js"></script>
+	<script src="js/index.js"></script>
+	<!--<script src="js/jquery-3.1.1.min.jss"></script>
+	<script src="js/pageNav.js"></script>-->
+	<script src="../public.js"></script>
+</html>
