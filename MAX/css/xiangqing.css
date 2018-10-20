@@ -1,0 +1,9 @@
+#vehicle-d{
+	margin: 10px auto;
+	width: 1200px;
+	height: 800px;
+	background: lavender;
+	border: 1px solid #fff;
+	text-align: center;
+	border-radius: 5px;
+}

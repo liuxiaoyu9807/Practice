@@ -1,0 +1,269 @@
+/***** 左导航 *****/
+.toolbar {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 36px;
+  height: 100%;
+  background-color: #333333;
+  z-index: 999;
+}
+.toolbar .heard_img {
+  position: relative;
+  height: 166px;
+  cursor: pointer;
+  margin-top: 60px;
+}
+.toolbar .heard_img .tool-tip {
+  display: none;
+  position: absolute;
+  background: #fff;
+  width: 224px;
+  left: -224px;
+  top: 30px;
+  color: #fff;
+}
+.toolbar .heard_img .tool-img {
+  background: url(http://design.ehaoyao.com/new_site/static/images/toolbar.png) no-repeat 0 0;
+  display: block;
+  height: 166px;
+}
+.toolbar .carImg {
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  margin: 60px 0 20px 0;
+  cursor: pointer;
+}
+.toolbar .carImg .tip_car {
+  position: relative;
+  padding-top: 10px;
+}
+.toolbar .carImg .tip_car i {
+  background: url(http://design.ehaoyao.com/new_site/static/images/menu_icon.png) no-repeat -228px -502px;
+  height: 25px;
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 0px;
+  width: 36px;
+}
+.toolbar .carImg .tip_car p {
+  display: inline-block;
+  width: 100%;
+  height: 60px;
+  padding-top: 27px;
+}
+.toolbar .carImg .toolbar-line {
+  border-bottom: 1px #686868 solid;
+}
+.toolbar .carImg .toolbar-line span {
+  color: #fff;
+  background: #ff5251;
+  width: 26px;
+  display: inline-block;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.toolbar .favirate {
+  margin: 20px 0 10px 0;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+  height: 27px;
+}
+.toolbar .favirate p :hover {
+  background-color: #ff5251;
+}
+.toolbar .favirate p i {
+  background: url(http://design.ehaoyao.com/new_site/static/images/menu_icon.png) no-repeat -228px -548px;
+  display: inline-block;
+  width: 100%;
+  height: 30px;
+}
+.toolbar .favirate .mbar-tip {
+  display: none;
+  position: absolute;
+  right: 36px;
+  top: 0px;
+  width: 90px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  color: #fff;
+  background-color: #494949;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.toolbar .favirate .mbar-tip .mbar-tip-arr {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  font-size: 16px;
+  font-family: "\5B8B\4F53";
+  color: #494949;
+  top: 10px;
+  right: -8px;
+}
+.toolbar .gz {
+  margin-top: 10px;
+  position: relative;
+}
+.toolbar .gz p :hover {
+  background-color: #ff5251;
+}
+.toolbar .gz p i {
+  background: url(http://design.ehaoyao.com/new_site/static/images/menu_icon.png) no-repeat -227px -729px;
+  display: inline-block;
+  width: 100%;
+  height: 30px;
+}
+.toolbar .gz .mbar-tip-sm {
+  display: none;
+  position: absolute;
+  right: 36px;
+  padding-top: 10px;
+  top: -166px;
+  width: 135px;
+  height: 315px;
+  text-align: center;
+  color: #fff;
+  background-color: #494949;
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.toolbar .gz .mbar-tip-sm p {
+  padding-top: 130px;
+  line-height: 25px;
+}
+.toolbar .gz .mbar-tip-sm p.app {
+  background: url(http://design.ehaoyao.com/new_site/static/images/toolbar_app.jpg) no-repeat center top;
+}
+.toolbar .gz .mbar-tip-sm p.wechat {
+  background: url(http://design.ehaoyao.com/new_site/static/images/toolbar_wechat.jpg) no-repeat center top;
+}
+.toolbar .gz .mbar-tip-sm .mbar-tip-arr {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  font-size: 16px;
+  font-family: "\5B8B\4F53";
+  color: #494949;
+  top: 175px;
+  right: -8px;
+}
+.toolbar .bot_Top {
+  position: absolute;
+  bottom: 0px;
+  cursor: pointer;
+  width: 100%;
+}
+.toolbar .bot_Top .Topup i {
+  background: url(http://design.ehaoyao.com/new_site/static/images/menu_icon.png) no-repeat -227px -671px;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.tool-cont {
+  width: 224px;
+}
+.tool-cont h2 {
+  background: #333333;
+  height: 27px;
+  color: #fff;
+  font-size: 12px;
+  line-height: 27px;
+  font-weight: normal;
+  padding-left: 20px;
+}
+.tool-cont ul {
+  max-height: 320px;
+  overflow-y: auto;
+}
+.tool-cont li {
+  border-bottom: 1px #d8d8d8 dashed;
+  overflow: hidden;
+  padding: 10px 0;
+}
+.tool-cont li .tool-zx-img {
+  float: left;
+  width: 70px;
+  height: 85px;
+  position: relative;
+}
+.tool-cont li .tool-zx-img p img {
+  height: 70px;
+  width: 70px;
+}
+.tool-cont li .tool-zx-img span {
+  color: #fff;
+  text-align: center;
+  background: #ff344d;
+  width: 64px;
+  height: 20px;
+  border-radius: 10px;
+  font-size: 12px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0px;
+  left: 3px;
+}
+.tool-cont li .tool-wz-img {
+  float: left;
+  width: 70px;
+}
+.tool-cont li .tool-wz-img p {
+  height: 55px;
+  background: url(http://design.ehaoyao.com/new_site/static/images/zx-img1.jpg) no-repeat center center;
+}
+.tool-cont li .tool-kf-img {
+  float: left;
+  width: 70px;
+}
+.tool-cont li .tool-kf-img p {
+  height: 55px;
+  background: url(http://design.ehaoyao.com/new_site/static/images/zx-img2.jpg) no-repeat center center;
+}
+.tool-cont li .tool-zx-text {
+  float: right;
+  width: 136px;
+}
+.tool-cont li .tool-zx-text h3 {
+  font-size: 14px;
+  color: #333;
+  font-weight: normal;
+}
+.tool-cont li .tool-zx-text p {
+  line-height: 20px;
+  color: #484848;
+  font-size: 12px;
+}
+.tool-cont li .tool-zx-text p span {
+  color: #333333;
+}
+.tool-cont li .tool-zx-text p.other-color {
+  color: #898989;
+  padding-bottom: 5px;
+}
+.barCoupon {
+  cursor: pointer;
+  height: 27px;
+  width: 100%;
+  display: none;
+  background: url(http://design.ehaoyao.com/new_site/static/images/barCoupon.png) no-repeat center center;
+}
+.barCoupon.on {
+  background: #ff5251 url(http://design.ehaoyao.com/new_site/static/images/barCoupon.png) no-repeat center center;
+}
+.barCoupon:hover {
+  background-color: #ff5251;
+}
+.car-hover {
+  background-color: #ff5251;
