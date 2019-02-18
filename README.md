@@ -11,3 +11,6 @@
   
     使用原生js的事件，实现的小游戏;
     
+### shouji/cuotishouji
+
+    ...
