@@ -19,21 +19,21 @@
 ## 这是一个基于Vue.js的,使用Vue-cli2.0和webpack搭建的项目
 
 ### 安装node_modules
-    ```JavaScript
-    npm install
-    ```
+```JavaScript
+npm install
+```
 ### 本地调试和热重载
-    ```JavaScript
-    npm run dev
-    ```
+```JavaScript
+npm run dev
+```
 ### 打包成为测试环境的文件
-    ```JavaScript
-    npm run buildtest 
-    ```
+```JavaScript
+npm run buildtest 
+```
 ### 打包成为正式环境的文件
-    ```JavaScript
-    npm run build
-    ```
+```JavaScript
+npm run build
+```
 ### 依赖要求
     node 11.1.0 虽然package.json版本要求6.0.0就可以但是最好使用11.1.0版本的
 #### 描述    
